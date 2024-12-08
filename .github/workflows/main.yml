@@ -30,7 +30,7 @@ jobs:
           # LOCAL_NOTEBOOKS_PATH
           local-path: './'
           # Remote Notebook Path
-          remote-path: '/Project1'
+          remote-path: '/Project1/'
           
           
     
