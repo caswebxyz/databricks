@@ -1,0 +1,38 @@
+# This is  a basic to get started with Actions
+name: CI
+#Controls when the workflow will run 
+on:
+  # triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches:  [ "main" ]
+  pull_request:
+    branches:  [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions Tab
+  workflow_dispatch:
+# A Workflow run is made of one or more jobs that run sequentially or parallely
+jobs:
+  # This workflow contains single job called Build
+  build:
+    # the type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represnt the sequence of tasks that will be executed as part of the job
+    Steps:
+    # Checks out your repository under $GITHUB_WORKSPACE , so Your job can access it
+    - uses: actions/checkout@v3
+    - name: install-databricks-cli
+      uses: microsoft/install-databricks-cli@v1.0.0
+      with:
+          # Databricks Host
+          databricks-host: ${{secrets.DATABRICKS_HOST}}
+          # Databricks token
+          databricks-token: ${{secrets.DATABRICKS_TOKEN}}
+          # LOCAL_NOTEBOOKS_PATH
+          local-path: './'
+          # Remote Notebook Path
+          remote-path: '/Project1'
+          
+          
+    
+    
+  
